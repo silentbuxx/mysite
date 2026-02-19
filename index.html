@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Access</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+    video {
+      width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Camera Test 📷</h2>
+<button onclick="startCamera()">Start Camera</button>
+<br>
+<video id="video" autoplay></video>
+
+<script>
+async function startCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    document.getElementById("video").srcObject = stream;
+  } catch (error) {
+    alert("Permission denied or error!");
+  }
+}
+</script>
+
+</body>
+</html>
